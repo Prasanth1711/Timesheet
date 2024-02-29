@@ -1,4 +1,4 @@
-    "use client"
+"use client"
 import * as React from "react"
 import { CalendarIcon } from "@radix-ui/react-icons"
 import { addDays, format } from "date-fns"
@@ -16,9 +16,15 @@ import {
 export function DatePickerWithRange({
   className,
 }: React.HTMLAttributes<HTMLDivElement>) {
+  var curr = new Date; // get current date
+  var first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
+  var last = first + 6; // last day is the first day + 6
+
+  var firstday = new Date(curr.setDate(first)).toUTCString();
+  var lastday = new Date(curr.setDate(last)).toUTCString();
   const [date, setDate] = React.useState<DateRange | undefined>({
-    from: new Date(2022, 0, 20),
-    to: addDays(new Date(2022, 0, 20), 20),
+    from: new Date(firstday),
+    to: new Date(lastday),
   })
 
   return (
