@@ -20,7 +20,7 @@ export const TimeSheetHome = () => {
             </div>
 
             <div className='flex justify-between  m-4 p-10 border-2 '>
-                <SearchDropDown />
+                {/* <SearchDropDown /> */}
                 <p className='font-medium'>Client</p>
                 <p className='font-medium'>Project</p>
                 <p className='font-medium'>Phase</p>

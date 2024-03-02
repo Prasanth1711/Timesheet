@@ -12,28 +12,72 @@ import SearchDropDown from "./SearchDropDown"
 
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-interface TTimeSheetData {
-    id: string,
-    Client: string,
-    Project: string,
-    Phase: string,
-    Task: string,
-    Mon: string,
-    Tue: string,
-    Wed: string,
-    Thu: string,
-    Fri: string,
-    Sat: string,
-    Sun: string,
-    Total: string,
+import { TKeyValue } from "@/models/TKeyValue"
+import { TTimeSheetData } from "@/models/TTimeSheetData"
 
-}
-const timeSheetData :TTimeSheetData[]= [
+const timeSheetData: TTimeSheetData[] = [
     {
         id: "INV001",
-        Client: "",
-        Project: "",
-        Phase: "",
+        Client: {
+            label: "UTA",
+            value: "uta"
+        },
+        Project: {
+            label: "UTA-Main",
+            value: "uta-main"
+        },
+        Phase: {
+            label: 'Development',
+            value: "development"
+        },
+        Task: "Development",
+        Mon: "8",
+        Tue: "7",
+        Wed: "6",
+        Thu: "5",
+        Fri: "4",
+        Sat: "3",
+        Sun: "2",
+        Total: "40"
+    },
+    {
+        id: "INV013",
+        Client: {
+            value: "united-talent-agency",
+            label: "United Talent Agency",
+        },
+        Project: {
+            label: "UTA-Speakers",
+            value: "uta-speakers"
+        },
+        Phase: {
+            label: 'Testing',
+            value: "testing"
+        },
+        Task: "Development",
+        Mon: "8",
+        Tue: "7",
+        Wed: "6",
+        Thu: "5",
+        Fri: "4",
+        Sat: "3",
+        Sun: "2",
+        Total: "40"
+    },
+    {
+        id: "INV003",
+        Client: {
+            label: "Test",
+            value: "test"
+        },
+        Project: {
+            label: "UTA-Speakers",
+            value: "uta-speakers"
+        },
+        Phase: {
+            label: 'Development',
+            value: "development"
+        },
         Task: "Development",
         Mon: "8",
         Tue: "7",
@@ -45,39 +89,55 @@ const timeSheetData :TTimeSheetData[]= [
         Total: "40"
     },
 
-    {
-        id: "INV003",
-        Client: "",
-        Project: "",
-        Phase: "",
-        Task: "Development",
-        Mon: "8",
-        Tue: "7",
-        Wed: "6",
-        Thu: "5",
-        Fri: "4",
-        Sat: "3",
-        Sun: "2",
-        Total: "40"
-    }, 
-    {
-        id: "INV003",
-        Client: "",
-        Project: "",
-        Phase: "",
-        Task: "Development",
-        Mon: "8",
-        Tue: "7",
-        Wed: "6",
-        Thu: "5",
-        Fri: "4",
-        Sat: "3",
-        Sun: "2",
-        Total: "40"
-    },
-    
 ]
 
+
+const ClientsDropDownList: TKeyValue[] = [
+    {
+        value: "united-talent-agency",
+        label: "United Talent Agency",
+    },
+
+    {
+        value: "uta",
+        label: "UTA",
+    },
+    {
+        value: "test",
+        label: "TEST",
+    }
+]
+
+const ProjectsDropDownList: TKeyValue[] = [
+    {
+        label: "UTA-Speakers",
+        value: "uta-speakers"
+    },
+    {
+        label: "UTA",
+        value: "uta"
+    },
+    {
+        label: "UTA-Main",
+        value: "uta-main"
+    },
+    {
+        value: "test-project",
+        label: "TEST-Project",
+    }
+]
+
+
+const PhaseDropDownList: TKeyValue[] = [
+    {
+        label: 'Testing',
+        value: "testing"
+    },
+    {
+        label: 'Development',
+        value: "development"
+    }
+]
 export function TimeSheetTable() {
     return (
         <Table >
@@ -103,17 +163,17 @@ export function TimeSheetTable() {
                 {timeSheetData.map((weekData) => (
                     <TableRow key={weekData.id}>
                         <TableCell className="font-medium">
-                            <SearchDropDown />
+                            <SearchDropDown preSelectedData={weekData.Client} dropdownListData={ClientsDropDownList} onSelectedItem={(data:TKeyValue)=>{console.log(data)}} />
                         </TableCell>
                         <TableCell>
-                            <SearchDropDown />
+                            <SearchDropDown preSelectedData={weekData.Project} dropdownListData={ProjectsDropDownList} onSelectedItem={(data:TKeyValue)=>{console.log(data)}} />
                         </TableCell>
                         <TableCell>
-                            <SearchDropDown />
+                            <SearchDropDown preSelectedData={weekData.Phase} dropdownListData={PhaseDropDownList} onSelectedItem={(data:TKeyValue)=>{console.log(data)}} />
                         </TableCell>
                         <TableCell><Input /></TableCell>
-                        <TableCell className="text-right"><Input value={weekData.Mon} onChange={(e)=>{console.log(e.target.value)}}  className="p-0 text-center" /></TableCell>
-                        <TableCell className="text-right"><Input value={weekData.Thu}  className="p-0 text-center" /></TableCell>
+                        <TableCell className="text-right"><Input value={weekData.Mon} onChange={(e) => { console.log(e.target.value) }} className="p-0 text-center" /></TableCell>
+                        <TableCell className="text-right"><Input value={weekData.Thu} className="p-0 text-center" /></TableCell>
                         <TableCell className="text-right"><Input value={weekData.Wed} className="p-0 text-center" /></TableCell>
                         <TableCell className="text-right"><Input value={weekData.Thu} className="p-0 text-center" /></TableCell>
                         <TableCell className="text-right"><Input value={weekData.Fri} className="p-0 text-center" /></TableCell>
