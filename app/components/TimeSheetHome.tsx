@@ -1,5 +1,7 @@
 import { Inputs } from "./Inputs"
+import SearchDropDown from "./SearchDropDown"
 import { DatePickerWithRange } from "./Temp"
+import { TimeSheetTable } from "./TimeSheetTable"
 
 export const TimeSheetHome = () => {
     return <div>
@@ -10,8 +12,15 @@ export const TimeSheetHome = () => {
                 <DatePickerWithRange />
             </div>
         </div>
-        <div className='bg-white'>
+
+        <div className='bg-white m-4'>
+            <div className="p-2 m-2">
+                <TimeSheetTable />
+
+            </div>
+
             <div className='flex justify-between  m-4 p-10 border-2 '>
+                <SearchDropDown />
                 <p className='font-medium'>Client</p>
                 <p className='font-medium'>Project</p>
                 <p className='font-medium'>Phase</p>
