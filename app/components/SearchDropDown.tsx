@@ -22,15 +22,15 @@ import { TKeyValue } from "@/models/TKeyValue"
 
 
 interface SearchDropDownProps {
-    preSelectedData: TKeyValue,
-    dropdownListData: TKeyValue[],
+    preSelectedData?: TKeyValue,
+    dropdownListData?: TKeyValue[],
     onSelectedItem: (data: TKeyValue) => void;
-
+    type:string
 }
 
-export default function SearchDropDown({ dropdownListData, preSelectedData, onSelectedItem }: SearchDropDownProps) {
+export default function SearchDropDown({ dropdownListData, preSelectedData, onSelectedItem ,type }: SearchDropDownProps) {
     const [open, setOpen] = React.useState(false)
-    const [valuee, setValue] = React.useState(preSelectedData.value ? preSelectedData.value : "")
+    const [valuee, setValue] = React.useState(preSelectedData?.value ? preSelectedData.value : "")
 
     return (
         <Popover open={open} onOpenChange={setOpen}>
@@ -42,17 +42,17 @@ export default function SearchDropDown({ dropdownListData, preSelectedData, onSe
                     className="w-[200px] justify-between"
                 >
                     {valuee
-                        ? dropdownListData.find((each) => each.value === valuee)?.label
-                        : "Select Client"}
+                        ? dropdownListData?.find((each) => each.value === valuee)?.label
+                        : `Select ${type}`}
                     <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                 </Button>
             </PopoverTrigger>
             <PopoverContent className="w-[200px] p-0">
                 <Command>
-                    <CommandInput placeholder="Search framework..." />
-                    <CommandEmpty>Select Client</CommandEmpty>
+                    <CommandInput placeholder={`Search ${type}`} />
+                    <CommandEmpty>{`Select ${type}`}</CommandEmpty>
                     <CommandGroup>
-                        {dropdownListData.map((each) => (
+                        {dropdownListData?.map((each) => (
                             <CommandItem
                                 key={each.value}
                                 value={each.value}

@@ -17,40 +17,47 @@ import {
 
 type SelectRangeEventHandler = (range: DateRange | undefined) => void;
 
-export function DatePickerWithRange({
-  className,
-}: React.HTMLAttributes<HTMLDivElement>) {
-  const today = new Date(); // Get current date
-  const nextWeek = new Date(today); // Create a new date object for today
-  nextWeek.setDate(nextWeek.getDate() + 6); // Add 7 days to get the ending date of this week
+export function DatePickerWithRange({ getSelectedDates }: any) {
+  const today = new Date();
+  const nextWeek = new Date(today);
+  nextWeek.setDate(nextWeek.getDate() + 6);
 
   const [date, setDate] = React.useState<DateRange>({
-    from: today, // Set starting date of range to today
-    to: nextWeek, // Set ending date of range to next week
+    from: today,
+    to: nextWeek,
   })
+  function getDatesInRange(startDate: Date, endDate: Date) {
+    const date = new Date(startDate.getTime());
 
+    const dates = [];
+
+    while (date <= endDate) {
+      dates.push(new Date(date));
+      date.setDate(date.getDate() + 1);
+    }
+    return dates;
+  }
+
+  React.useEffect(() => {
+    if (date.from && date.to) {
+      const temp = getDatesInRange(date.from!, date.to!)
+      getSelectedDates(temp)
+    }
+  }, [date])
   const onSelectRange: SelectRangeEventHandler = (range) => {
-    if (range) {
-      // Calculate the difference between the 'from' and 'to' dates in milliseconds
-      const difference = (range.to ?? today).getTime() - (range.from ?? today).getTime();
-      // Calculate the number of days between 'from' and 'to' dates
-      const daysDifference = Math.ceil(difference / (1000 * 3600 * 24));
-
-      // If the selected range is not exactly 7 days, adjust the 'to' date accordingly
-      if (daysDifference !== 6) {
-        const newTo = new Date(range.from ?? today); // Create a new Date object based on the selected 'from' date
-        newTo.setDate(newTo.getDate() + 6 ); // Add 7 days to the 'from' date
-
-        setDate({
-          from: range.from ?? today,
-          to: newTo,
-        });
+    const newTo = new Date(range?.from ?? today);
+    newTo.setDate(newTo.getDate() + 6);
+    if(range?.from?.getDay()==1){
+      if (range?.to > date?.to) {
+          setDate({ from: undefined, to: undefined })
+      } else{
+        setDate({ from: range?.from, to: newTo })
       }
     }
   };
 
   return (
-    <div className={cn("grid gap-2", className)}>
+    <div className={cn("grid gap-2")}>
       <Popover>
         <PopoverTrigger asChild>
           <Button

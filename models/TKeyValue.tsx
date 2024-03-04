@@ -1,5 +1,5 @@
 
 export interface TKeyValue {
-    value: string,
-    label: string
+    value?: string,
+    label? : string
 }
