@@ -40,54 +40,54 @@ const timeSheetData: TTimeSheetData[] = [
         Sun: "2",
         Total: "40"
     },
-    {
-        id: "INV013",
-        Client: {
-            value: "united-talent-agency",
-            label: "United Talent Agency",
-        },
-        Project: {
-            label: "UTA-Speakers",
-            value: "uta-speakers"
-        },
-        Phase: {
-            label: 'Testing',
-            value: "testing"
-        },
-        Task: "Development",
-        Mon: "8",
-        Tue: "7",
-        Wed: "6",
-        Thu: "5",
-        Fri: "4",
-        Sat: "3",
-        Sun: "2",
-        Total: "40"
-    },
-    {
-        id: "INV003",
-        Client: {
-            label: "Test",
-            value: "test"
-        },
-        Project: {
-            label: "UTA-Speakers",
-            value: "uta-speakers"
-        },
-        Phase: {
-            label: 'Development',
-            value: "development"
-        },
-        Task: "Development",
-        Mon: "8",
-        Tue: "7",
-        Wed: "6",
-        Thu: "5",
-        Fri: "4",
-        Sat: "3",
-        Sun: "2",
-        Total: "40"
-    },
+    // {
+    //     id: "INV013",
+    //     Client: {
+    //         value: "united-talent-agency",
+    //         label: "United Talent Agency",
+    //     },
+    //     Project: {
+    //         label: "UTA-Speakers",
+    //         value: "uta-speakers"
+    //     },
+    //     Phase: {
+    //         label: 'Testing',
+    //         value: "testing"
+    //     },
+    //     Task: "Development",
+    //     Mon: "8",
+    //     Tue: "7",
+    //     Wed: "6",
+    //     Thu: "5",
+    //     Fri: "4",
+    //     Sat: "3",
+    //     Sun: "2",
+    //     Total: "40"
+    // },
+    // {
+    //     id: "INV003",
+    //     Client: {
+    //         label: "Test",
+    //         value: "test"
+    //     },
+    //     Project: {
+    //         label: "UTA-Speakers",
+    //         value: "uta-speakers"
+    //     },
+    //     Phase: {
+    //         label: 'Development',
+    //         value: "development"
+    //     },
+    //     Task: "Development",
+    //     Mon: "8",
+    //     Tue: "7",
+    //     Wed: "6",
+    //     Thu: "5",
+    //     Fri: "4",
+    //     Sat: "3",
+    //     Sun: "2",
+    //     Total: "40"
+    // },
     
 
 ]
@@ -156,7 +156,7 @@ export function TimeSheetTable() {
                     <TableHead className="w-[70px] text-center">Sat</TableHead>
                     <TableHead className="w-[70px] text-center">Sun</TableHead>
                     <TableHead className="w-[70px] text-center">Total</TableHead>
-                    <TableHead>--</TableHead>
+                    <TableHead> -- </TableHead>
 
                 </TableRow>
             </TableHeader>

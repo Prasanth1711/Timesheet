@@ -18,7 +18,7 @@ export const TimeSheetHome = () => {
                 <TimeSheetTable />
 
             </div>
-            <div className='flex justify-between  m-4 p-10 border-2 '>
+            {/* <div className='flex justify-between  m-4 p-10 border-2 '>
                 <p className='font-medium'>Client</p>
                 <p className='font-medium'>Project</p>
                 <p className='font-medium'>Phase</p>
@@ -31,7 +31,7 @@ export const TimeSheetHome = () => {
                 <p className='font-medium'>Sat</p>
                 <p className='font-medium'>Sun</p>
                 <p className='font-medium'>Total</p>
-            </div>
+            </div> */}
         </div>
         <div>
         </div>
