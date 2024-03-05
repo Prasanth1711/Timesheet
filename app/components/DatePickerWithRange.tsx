@@ -90,7 +90,8 @@ export function DatePickerWithRange({ getSelectedDates }: any) {
             defaultMonth={date?.from}
             selected={date}
             onSelect={onSelectRange}
-            numberOfMonths={2}
+            numberOfMonths={1}
+            weekStartsOn={1}
           />
         </PopoverContent>
       </Popover>
