@@ -84,14 +84,13 @@ export function DatePickerWithRange({ getSelectedDates }: any) {
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-auto p-0" align="start">
-          
           <Calendar
             initialFocus
             mode="range"
             defaultMonth={date?.from}
             selected={date}
             onSelect={onSelectRange}
-            numberOfMonths={1}
+            numberOfMonths={2}
           />
         </PopoverContent>
       </Popover>
