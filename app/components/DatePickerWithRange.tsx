@@ -49,7 +49,7 @@ export function DatePickerWithRange({ getSelectedDates }: any) {
 
 
 React.useEffect(()=>{
-  if (tempSelection?.to > date?.to) {
+  if (tempSelection?.to > date.to!) {
     setDate({ from: undefined, to: undefined });
   } else {
     let newTo = new Date(tempSelection?.from ?? today);
