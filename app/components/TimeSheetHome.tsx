@@ -11,7 +11,7 @@ export const TimeSheetHome = () => {
     const [selectedDates, setSelectedDates] = useState<DateDay[]>([])
     console.log(selectedDates)
     return <div>
-        <h1>My Timesheet</h1>
+        <h1 className = 'pt-4 pl-6'>My Timesheet</h1>
         <div className='flex  justify-between shadow-md m-4 rounded-md border-2 '>
             <div className='p-2'>
                 <DatePickerWithRange getSelectedDates={(dates: any) => { setSelectedDates(dates.map((date: Date) => ({ date: date.getDate().toString(), day: date.getDay().toString() } as DateDay))) }} />
